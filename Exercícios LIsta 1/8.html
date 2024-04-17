@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Verificação de idade</title>
+</head>
+
+<body>
+    <h1> Verificação de idade </h1>
+
+    <script>
+        let idade = prompt('Digite sua idade')
+
+        if (idade >= 18 && idade < 70) {
+            alert('Eleitor obrigatório')
+        }
+        else if (idade >= 16 && idade < 18) {
+            alert('Eleitor não obrigatório')
+        }
+        else if (idade >= 70){
+            alert('Eleitor não obrigatório')
+        }
+        else {
+            alert('Não eleitor')
+        }
+    </script>
+</body>

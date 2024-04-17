@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Clientes da Jéssica</title>
+</head>
+
+<body>
+    <h1>Clientes da Jéssica</h1>
+    <script>
+    document.write('Belo Horizonte, 23 clientes, faturamento: R$2950 <br>') 
+    document.write('São Paulo, 12 clientes, faturamento: R$3950 <br>') 
+    document.write('Salvador, 11 clientes, faturamento: R$1329 <br>') 
+    document.write('Campo grande, 10 clientes, faturamento: R$2412 <br>') 
+    document.write('Curitiba, 8 clientes, faturamento: R$626') 
+
+    let bh = 'Belo Horizonte'
+    let sp = 'São Paulo'
+    let sv = 'Salvador'
+    let cp = 'Campo Grande'
+    let c = 'Curitiba'
+    let clientesbh = 23
+    let clientessp = 12
+    let clientessv = 11
+    let clientescp = 10
+    let clientesc = 8
+    let faturamentobh = 2950
+    let faturamentosp = 3950
+    let faturamentosv = 1329
+    let faturamentocp = 2412
+    let faturamentoc = 626
+    let clientestotal = clientesbh + clientessp + clientessv + clientescp + clientesc
+    let mediabh = Math.round(faturamentobh / clientesbh) 
+    let mediasp = Math.round(faturamentosp / clientessp)
+    let mediasv = Math.round(faturamentosv / clientessv)
+    let mediacp = Math.round(faturamentocp / clientescp)
+    let mediac = Math.round(faturamentoc / clientesc)
+
+    alert(`Nas cidades de ${bh}, ${sp}, ${sv}, ${cp} e ${c}, Jéssica possui um total de ${clientestotal} clientes.`);
+
+    alert(`O faturamento médio de Jéssica por cliente em Belo Horizonte é de: ${mediabh}`);
+    alert(`O faturamento médio de Jéssica por cliente em São Paulo é de: ${mediasp}`);
+    alert(`O faturamento médio de Jéssica por cliente em Salvador é de: ${mediasv}`);
+    alert(`O faturamento médio de Jéssica por cliente em Campina Grande é de: ${mediacp}`);
+    alert(`O faturamento médio de Jéssica por cliente em Curitiba é de: ${mediac}`);
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Agência de viagens</title>
+
+    <style>
+        h2 {
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Agência de viagens</h1>
+    <script>
+        document.write('<h2>Destino: Nova Zelândia <br> Passagens aéreas: R$ 13996 <br> Diária hotel: NZ $ 79,15 <br> Guia local: NZ $ 200 <br> </h2>') 
+        document.write('<h2>Destino: Tailândia <br> Passagens aéreas: R$ 9160 <br> Diária hotel: THB 590 <br> Guia local: THB 235 <br> </h2>') 
+        document.write('<h2>Destino: Costa Rica <br> Passagens aéreas: R$ 5119 <br> Diária hotel: CRC 2300 <br> Guia local: CRC 3150 <br> </h2>') 
+
+const taxaRealParaNZD = 0.32; // 1 BRL = 0.32 NZD
+const taxaRealParaTHB = 7.02; // 1 BRL = 7.02 THB
+const taxaRealParaCRC = 95.49; // 1 BRL = 95.49 CRC
+
+//converter de real para outras moedas
+function converterDeReal(valorEmBRL) {
+    const valorEmNZD = valorEmBRL * taxaRealParaNZD;
+    const valorEmTHB = valorEmBRL * taxaRealParaTHB;
+    const valorEmCRC = valorEmBRL * taxaRealParaCRC;
+
+    console.log(`${valorEmBRL} BRL equivalem a:`);
+    console.log(`${valorEmNZD.toFixed(2)} NZD (Dólar Neozelandês)`);
+    console.log(`${valorEmTHB.toFixed(2)} THB (Baht Tailandês)`);
+    console.log(`${valorEmCRC.toFixed(2)} CRC (Colón Costarriquenho)`);
+}
+
+//converter de outras moedas para real
+function converterParaReal(valor, moeda) {
+    let valorEmBRL;
+    switch (moeda) {
+        case 'NZD':
+            valorEmBRL = valor / taxaRealParaNZD;
+            break;
+        case 'THB':
+            valorEmBRL = valor / taxaRealParaTHB;
+            break;
+        case 'CRC':
+            valorEmBRL = valor / taxaRealParaCRC;
+            break;
+        default:
+            console.log("Moeda não encontrada.");
+            return;
+    }
+    console.log(`${valor} ${moeda} equivalem a ${valorEmBRL.toFixed(2)} BRL (Real Brasileiro).`);
+}
+
+function iniciarConversor() {
+    const valor = parseFloat(prompt("Informe o valor em BRL a ser convertido: "));
+
+    if (isNaN(valor) || valor <= 0) {
+        console.log("Valor inválido. Por favor, insira um número válido maior que zero.");
+        return;
+    }
+
+    console.log("Convertendo", valor, "BRL para outras moedas:");
+    converterDeReal(valor);
+
+    const moeda = prompt("Informe a moeda que deseja converter para BRL (NZD, THB, CRC):").toUpperCase();
+
+    if (moeda !== 'NZD' && moeda !== 'THB' && moeda !== 'CRC') {
+        console.log("Moeda não suportada.");
+        return;
+    }
+
+    const valorMoeda = parseFloat(prompt(`Informe o valor em ${moeda}:`));
+
+    if (isNaN(valorMoeda) || valorMoeda <= 0) {
+        console.log("Valor inválido. Por favor, insira um número válido maior que zero.");
+        return;
+    }
+
+    console.log(`Convertendo ${valorMoeda} ${moeda} para BRL:`);
+    converterParaReal(valorMoeda, moeda);
+}
+
+iniciarConversor();
+
+function enviarEmail() {
+    const nomeCliente = prompt("Por favor, insira seu nome:");
+    const destinoEscolhido = prompt("Escolha o destino da sua viagem:\n1. Nova Zelândia\n2. Tailândia\n3. Costa Rica");
+
+    let destino;
+    let valorPassagens;
+    let diariaHotel;
+    let valorGuia;
+
+    switch (destinoEscolhido) {
+        case '1':
+            destino = "Nova Zelândia";
+            valorPassagens = 13996;
+            diariaHotel = 79.15 * 3.11; // Convertendo NZD para BRL
+            valorGuia = 200 * 3.11; // Convertendo NZD para BRL
+            break;
+        case '2':
+            destino = "Tailândia";
+            valorPassagens = 9160;
+            diariaHotel = 590 * 6.99; // Convertendo THB para BRL
+            valorGuia = 235 * 6.99; // Convertendo THB para BRL
+            break;
+        case '3':
+            destino = "Costa Rica";
+            valorPassagens = 5119;
+            diariaHotel = 2300 * 0.011; // Convertendo CRC para BRL
+            valorGuia = 3150 * 0.011; // Convertendo CRC para BRL
+            break;
+        default:
+            alert("Opção inválida. Por favor, escolha uma das opções listadas.");
+            return;
+    }
+
+    const custoTotal = valorPassagens + diariaHotel + valorGuia;
+
+    const mensagem = `
+    Olá, ${nomeCliente}! É um prazer termos você como cliente e estamos ansiosos para que sua viagem para ${destino} possa ocorrer em breve!
+    Estou te encaminhando os custos:
+    As passagens ficarão em torno de R$ ${valorPassagens.toFixed(2)}, a diária do hotel será de R$ ${diariaHotel.toFixed(2)} e o guia local custará R$ ${valorGuia.toFixed(2)}.
+    Sua viagem custará R$ ${custoTotal.toFixed(2)}!
+    `;
+
+    alert(mensagem);
+}
+
+enviarEmail();
+
+    </script>
+</body>
